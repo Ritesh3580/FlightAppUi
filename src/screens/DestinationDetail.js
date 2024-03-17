@@ -215,7 +215,7 @@ const DestinationDetail = ({ navigation }) => {
             </View>
 
             {/* Footer */}
-            <View style={{ flex: 0.5, paddingHorizontal: SIZES.padding }}>
+            {/* <View style={{ flex: 0.5, paddingHorizontal: SIZES.padding }}>
                 <LinearGradient
                     style={[{ height: 70, width: '100%', borderRadius: 15 }]}
                     colors={['#edf0fc', '#d6dfff']}
@@ -242,7 +242,7 @@ const DestinationDetail = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                 </LinearGradient>
-            </View>
+            </View> */}
         </View>
     );
 };

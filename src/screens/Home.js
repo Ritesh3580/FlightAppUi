@@ -6,11 +6,14 @@ import {
     Image,
     Text,
     TouchableOpacity,
-    FlatList
+    FlatList,
+    SafeAreaView,
+    ScrollView
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { images, icons, COLORS, FONTS, SIZES } from '../constants';
+import SearchScreen from '../component/FlightComp/SearchScreen';
 
 const OptionItem = ({ bgColor, icon, label, onPress }) => {
     return (
@@ -97,18 +100,28 @@ const Home = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+
+            <ScrollView>
+
+           
             {/* Banner */}
-            <View style={{ flex: 1, marginTop: SIZES.base, paddingHorizontal: SIZES.padding, }}>
+            <View style={{ height:150, marginTop: SIZES.base, paddingHorizontal: 10, }}>
                 <Image
-                    source={images.homeBanner}
-                    resizeMode="cover"
+                    source={images.bannerTrip}
+                    resizeMode='stretch'
                     style={{
                         width: "100%",
-                        height: "100%",
+                        height: "90%",
                         borderRadius: 15,
                     }}
                 />
+            </View>
+
+            {/* Search Flight trip */}
+            <View style={{height:'auto',marginTop: SIZES.base, paddingHorizontal: 10,  padding:0 }}>
+            <SearchScreen/>
+
             </View>
 
             {/* Options */}
@@ -118,7 +131,9 @@ const Home = ({ navigation }) => {
                         icon={icons.airplane}
                         bgColor={['#46aeff', '#5884ff']}
                         label="Flight"
-                        onPress={() => { console.log("Flight") }}
+                        onPress={() => { 
+                           // navigation.navigate('TravelRequestScreen') 
+                        }}
                     />
                     <OptionItem
                         icon={icons.train}
@@ -169,7 +184,7 @@ const Home = ({ navigation }) => {
             </View>
 
             {/* Destination */}
-            <View style={{ flex: 1 }}>
+            <View style={{ height:200}}>
                 <Text style={{ marginTop: SIZES.base, marginHorizontal: SIZES.padding, ...FONTS.h2 }}>Destination</Text>
                 <FlatList
                     horizontal
@@ -179,14 +194,17 @@ const Home = ({ navigation }) => {
                     renderItem={({ item, index }) => renderDestinations(item, index)}
                 />
             </View>
-        </View>
+
+            </ScrollView>
+
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.white
+        backgroundColor: 'white'
     },
     shadow: {
         shadowColor: "#000",
